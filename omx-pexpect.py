@@ -24,14 +24,7 @@ import pexpect
 import time
 import glob
 import random
-
-from mutagen.mp3 import MP3
-
 import threading
-import logging
-
-logging.basicConfig(level=logging.DEBUG,
-                    format='(%(threadName)-9s) %(message)s',)
 
 
 def player_lista (mp3):
@@ -68,62 +61,62 @@ def archivos ():
     random.shuffle(lista)
 
 
-if __name__ == '__main__':
+t = threading.Thread(name='archivos', target=archivos)
 
-    t = threading.Thread(name='archivos', target=archivos)
+t.start()
+t.join()
+    
+d = threading.Thread(name='playeromx', target=player_lista, args=(lista,))
+d.setDaemon(True)
+d.start()
 
-	t.start()
-    t.join()
+print 'Aqui debe comenzar la musica'
+	
+i2 = len(lista)
+print ('Total de canciones %s' % i2)
     
-    d = threading.Thread(name='playeromx', target=player_lista, args=(lista,))
-    d.setDaemon(True)
-    d.start()
-    print 'Aqui debe comenzar la musica'
-    i2 = len(lista)
-    print ('Total de canciones %s' % i2)
-    
-    while i2 > 0:
-        time.sleep(3)
-        #os.system('cls||clear')
-        print '\nReproduciendo >>> ', song.split("/", 5)[-1]
+while i2 > 0:
+    time.sleep(3)
+       #os.system('cls||clear')
+    print '\nReproduciendo >>> ', song.split("/", 5)[-1]
         
-        tipo=''
-        while tipo not in [1, 2, 3]:
-            print ('\nElige un numero (control de reproduccion):\n')
-            print ('  1 - Play/Pausa\n  2 - Siguiente cancion\n  3 - Quit/Salir')
-            try:
-                tipo = int(raw_input('\nNumero ? '))
-                
-                if tipo > 3 or tipo < 1:
-                    os.system('cls||clear')
-                    print '--- Solo numeros 1 2 o 3 ---'
-                    time.sleep(3)
-                
-            except ValueError:
-                
+    tipo=''
+    while tipo not in [1, 2, 3]:
+        print ('\nElige un numero (control de reproduccion):\n')
+        print ('  1 - Play/Pausa\n  2 - Siguiente cancion\n  3 - Quit/Salir')
+        try:
+            tipo = int(raw_input('\nNumero ? '))
+              
+            if tipo > 3 or tipo < 1:
                 os.system('cls||clear')
-                print ('\n*** SOLO NUMEROS 1, 2 o 3 POR FAVOR ***\n')
+                print '--- Solo numeros 1 2 o 3 ---'
                 time.sleep(3)
-                continue
+                
+        except ValueError:
+                
+            os.system('cls||clear')
+            print ('\n*** SOLO NUMEROS 1, 2 o 3 POR FAVOR ***\n')
+            time.sleep(3)
+            continue
     
-        if tipo == 1:
-            print '\nPausado\n'
-            proc.send('p')
+    if tipo == 1:
+        print '\nPausado\n'
+        proc.send('p')
     
-        elif tipo == 2:
-            print ('\nSiguiente\n')
+    elif tipo == 2:
+        print ('\nSiguiente\n')
             
-            proc.send('q')
-            i2 -= 1
-            print i2
+        proc.send('q')
+        i2 -= 1
+        print i2
             
-        elif tipo == 3:
-            print ('\nSalir')
-            exit()
+    elif tipo == 3:
+        print ('\nSalir')
+        exit()
     
         
        
-    print 'Aqui termina '
+print 'Aqui termina '
 	
     d.join()
 	
