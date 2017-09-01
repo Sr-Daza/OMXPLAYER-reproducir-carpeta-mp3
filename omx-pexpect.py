@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" Pograma para controlar musica con omxplayer desde telegram,
+""" Pograma para controlar musica con omxplayer,
 desde una ruta con archivos mp3 predefinida dentro de este modulo py.
 Con pause, next, ramdom, etc
 
