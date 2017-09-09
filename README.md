@@ -7,6 +7,7 @@ Desarrollado para Rsapberry pi 2
 Con python 2.7
 
 Modulos de python:
+
 ---Pexpect
 ---glob
 ---ramdom
