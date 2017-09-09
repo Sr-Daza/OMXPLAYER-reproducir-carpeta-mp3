@@ -1,9 +1,19 @@
 # OMXPLAYER-reproducir-carpeta-mp3
 
-Desarrollado para Rspberry pi 2
+Reproducir mp3 de una carpeta con OMXPLAYER sin entorno grafico
+
+Desarrollado para Rsapberry pi 2
+
 Con python 2.7
 
-Reproducir mp3 de una carpeta con OMXPLAYER sin entorno grafico
+Modulos de python:
+---Pexpect
+---glob
+---ramdom
+---time
+---os
+
+
 
 Puedo reproducir los archivos de una carpeta de forma aleatoria
 
