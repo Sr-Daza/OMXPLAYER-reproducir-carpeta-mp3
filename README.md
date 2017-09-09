@@ -2,7 +2,7 @@
 
 Reproducir mp3 de una carpeta con OMXPLAYER sin entorno grafico
 
-Desarrollado para Rsapberry pi 2
+Desarrollado para Raspberry pi 2
 
 Con python 2.7
 
