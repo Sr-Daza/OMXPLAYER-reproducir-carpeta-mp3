@@ -7,11 +7,17 @@ Desarrollado para Raspberry pi 2, Con python 2.7
 Modulos de python:
 
  os
+ 
  pexpect
+ 
  time
+ 
  glob
+ 
  random
+ 
  sys
+ 
  threading
 
 
